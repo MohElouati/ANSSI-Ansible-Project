@@ -1,0 +1,30 @@
+- name: Gather Facts
+  gather_facts:
+
+###---PROMPT---###
+- name: Launch English Prompt
+  include_tasks: gather_prompt_english.yml
+  when: LANGUAGE.user_input == "english"
+
+- name: Launch French Prompt
+  include_tasks: gather_prompt_french.yml
+  when: LANGUAGE.user_input == "french"
+###---PROMPT---###
+
+- name: Gather OS
+  include_tasks: gather_os.yml
+
+- name: Gather Disk Space
+  include_tasks: gather_disk_space.yml
+
+- name: Gather Memory
+  include_tasks: gather_memory.yml
+
+- name: Gather Processor
+  include_tasks: gather_processor.yml
+
+- name: Gather Processus
+  include_tasks: gather_process.yml
+
+- name: Gather Network
+  include_tasks: gather_network.yml

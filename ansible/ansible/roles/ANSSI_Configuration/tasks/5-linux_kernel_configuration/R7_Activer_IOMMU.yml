@@ -1,0 +1,25 @@
+---
+- name: Enable IOMMU in GRUB configuration
+  lineinfile:
+    path: /etc/default/grub
+    regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=force"'
+  register: iommu_grub_update
+
+- name: Update GRUB configuration for UEFI systems
+  command: grub2-mkconfig -o /boot/efi/EFI/almalinux/grub.cfg
+  when: iommu_grub_update.changed and ansible_facts['bootloader']['type'] == 'EFI'
+  register: grub_update_uefi
+
+- name: Update GRUB configuration for BIOS systems
+  command: grub2-mkconfig -o /boot/grub2/grub.cfg
+  when: iommu_grub_update.changed and ansible_facts['bootloader']['type'] != 'EFI'
+  register: grub_update_bios
+
+- name: Reboot server to apply changes
+  reboot:
+    msg: "Rebooting server to apply IOMMU changes."
+    pre_reboot_delay: 5
+  when: iommu_grub_update.changed
+
+# --- [R7] --- #

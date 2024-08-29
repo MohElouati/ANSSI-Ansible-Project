@@ -1,0 +1,5 @@
+---
+# Tâches pour secure boot selon les recommandations de l'ANSSI
+
+- include_tasks: "R3_UEFI_Secure_Boot.yml"
+- include_tasks: "R4_Remplacer_les_clés_préchargées.yml"

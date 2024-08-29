@@ -1,0 +1,99 @@
+# --- [R58] --- #
+
+- name: "[Basic R58] - Install patch"
+  ansible.builtin.dnf:
+    name: patch
+    state: latest
+
+- name: "[Basic R58] - Install strace"
+  ansible.builtin.dnf:
+    name: strace
+    state: latest
+
+- name: "[Basic R58] - Install lshw"
+  ansible.builtin.dnf:
+    name: lshw
+    state: latest
+
+- name: "[Basic R58] - Install curl"
+  ansible.builtin.dnf:
+    name: curl
+    state: latest
+
+- name: "[Basic R58] - Install tar"
+  ansible.builtin.dnf:
+    name: tar
+    state: latest
+    
+- name: "[Basic R58] - Install wget"
+  ansible.builtin.dnf:
+    name: wget
+    state: latest
+
+- name: "[Basic R58] - Install git"
+  ansible.builtin.dnf:
+    name: git
+    state: latest
+
+- name: "[Basic R58] - Install tree"
+  ansible.builtin.dnf:
+    name: tree
+    state: latest
+
+- name: "[Basic R58] - Install python3"
+  ansible.builtin.dnf:
+    name: python3
+    state: latest
+
+- name: "[Network R58] - Install nmap"
+  ansible.builtin.dnf:
+    name: nmap
+    state: latest
+
+- name: "[Network R58] - Install tcpdump"
+  ansible.builtin.dnf:
+    name: tcpdump
+    state: latest
+
+- name: "[Network R58] - Install wireshark"
+  ansible.builtin.dnf:
+    name: wireshark
+    state: latest
+
+- name: "[Network R58] - Install net-tools"
+  ansible.builtin.dnf:
+    name: net-tools
+    state: latest
+
+- name: "[Network R58] - Install traceroute"
+  ansible.builtin.dnf:
+    name: traceroute
+    state: latest
+
+
+- name: "[Office R58] - Install libreoffice"
+  ansible.builtin.dnf:
+    name: libreoffice
+    state: latest
+
+- name: "[Office R58] - Install firefox"
+  ansible.builtin.dnf:
+    name: firefox
+    state: latest
+
+- name: "[Office R58] - Install thunderbird"
+  ansible.builtin.dnf:
+    name: thunderbird
+    state: latest
+
+- name: "[Office R58] - Install gimp"
+  ansible.builtin.dnf:
+    name: gimp
+    state: latest
+
+- name: "[Office R58] - Install inkscape"
+  ansible.builtin.dnf:
+    name: inkscape
+    state: latest
+
+# --- [R58] --- #

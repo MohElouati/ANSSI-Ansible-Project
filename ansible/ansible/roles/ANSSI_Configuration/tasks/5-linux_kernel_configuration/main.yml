@@ -1,0 +1,6 @@
+---
+# Tâches pour désactiver l'IPv6 selon les recommandations de l'ANSSI
+
+#- include_tasks: "R13_Désactiver le plan IPv6.yml"
+- include_tasks: "R6_Protect_kernel_command_line.yml"
+- include_tasks: "R7_Activer_IOMMU.yml"

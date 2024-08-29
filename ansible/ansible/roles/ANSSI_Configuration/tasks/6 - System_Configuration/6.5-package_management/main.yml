@@ -1,0 +1,8 @@
+- include_tasks: R58_Necessary_packages.yml
+- include_tasks: R59_Trust.yml
+- include_tasks: Big_update.yml
+
+
+- name: Résultat
+  debug:
+     msg: "Tout est à jour !"
