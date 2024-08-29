@@ -1,0 +1,13 @@
+# main.yml for ANSSI_Configuration role
+---
+#- name: Hardware Configuration
+#  include_tasks: 4-hardware_configuration/main.yml
+
+#- name: Linux Kernel Configuration
+#  include_tasks: 5-linux_kernel_configuration/main.yml
+
+#- name: System Configuration
+#  include_tasks: 6 - System_Configuration/main.yml
+
+- name: Services Configuration
+  include_tasks: 7-Services_Configuration/main.yml

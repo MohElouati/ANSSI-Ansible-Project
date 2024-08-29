@@ -1,0 +1,11 @@
+---
+- name: Playbook pour désactiver l'IPv6
+- hosts: localhost
+  become: yes
+  connection: local
+
+  roles:
+    - Language_Selection
+    - Gather_Facts
+    - Packages_Installation
+    - ANSSI_Configuration

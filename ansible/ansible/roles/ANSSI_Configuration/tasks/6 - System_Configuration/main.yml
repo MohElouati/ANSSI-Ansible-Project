@@ -1,0 +1,2 @@
+- include_tasks: 6.6 - Veille et maintenance/main.yml
+- include_tasks: 6.5-package_management/main.yml

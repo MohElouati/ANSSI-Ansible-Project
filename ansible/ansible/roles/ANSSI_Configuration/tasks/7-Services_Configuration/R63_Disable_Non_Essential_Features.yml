@@ -1,0 +1,45 @@
+---
+- name: R63 - Disable SSH root login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?PermitRootLogin"
+    line: "PermitRootLogin no"
+    create: yes
+
+- name: R63 - Restart SSHD to apply configuration changes
+  systemd:
+    name: sshd
+    state: restarted
+
+- name: R63 - Disable X11 forwarding in SSH
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?X11Forwarding"
+    line: "X11Forwarding no"
+    create: yes
+
+- name: R63 - Restart SSHD after disabling X11 forwarding
+  systemd:
+    name: sshd
+    state: restarted
+
+- name: R63 - Disable HTTP TRACE and TRACK methods in Apache
+  blockinfile:
+    path: /etc/httpd/conf/httpd.conf
+    marker: "# {mark} Managed by Ansible - Disable TRACE/TRACK"
+    block: |
+      TraceEnable off
+      RewriteEngine On
+      RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+      RewriteRule .* - [F]
+
+- name: R63 - Restart HTTPD to apply configuration changes
+  systemd:
+    name: httpd
+    state: restarted
+
+- name: R63 - Disable Avahi-Daemon service
+  systemd:
+    name: avahi-daemon
+    enabled: false
+    state: stopped

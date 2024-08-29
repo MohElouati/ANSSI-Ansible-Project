@@ -1,0 +1,11 @@
+- include_tasks: R62_remove_unnecessary_services.yml
+- include_tasks: R63_Disable_Non_Essential_Features.yml
+#- include_tasks: R69_SSH_Configuration.yml
+
+
+
+- name: Résultat
+  debug:
+     msg: "Les services sont bien configurés!"
+
+

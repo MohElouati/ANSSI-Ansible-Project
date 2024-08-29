@@ -1,0 +1,30 @@
+---
+- name: R62 - Define unnecessary services
+  set_fact:
+    unnecessary_services:
+      - cups # Printing service
+      - avahi-daemon # Zeroconf/Bonjour service
+      - bluetooth # Bluetooth service
+      - telnet # Insecure remote login service
+      - rsh # Insecure remote shell service
+      - ypbind # NIS service
+      - xinetd # Extended internet services daemon
+      - rexec # Remote execution service
+      - nfs-server # Network File System server
+
+- name: R62 - Disable and stop unnecessary services
+  systemd:
+    name: "{{ item }}"
+    enabled: false
+    state: stopped
+  loop: "{{ unnecessary_services }}"
+  ignore_errors: yes
+  register: service_status
+
+- name: R62 - Display the status of disabled services
+  debug:
+    msg: |
+      Service {{ item.item }}:
+      - Changed: {{ item.changed }}
+      - Status: {{ item.msg | default('Service not found') }}
+  loop: "{{ service_status.results }}"

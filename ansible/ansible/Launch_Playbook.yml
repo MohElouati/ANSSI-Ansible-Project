@@ -1,0 +1,10 @@
+---
+- name: ANSSI configuration on AlmaLinux 
+  hosts: Target # <--- Edit "hosts.ini" file if not done
+  become: yes
+  vars:
+    ansible_user: moh # to edit everytime you change user!!! 
+  roles:
+    - Language_Selection
+    - Gather_Facts
+    - ANSSI_Configuration
