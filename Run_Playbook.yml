@@ -1,0 +1,14 @@
+---
+- name: ANSSI configuration on AlmaLinux
+  hosts: Target # <--- Edit "hosts.ini" file if not done
+  become: yes
+  vars:
+    ansible_user: user # to edit every time you change user!!!
+  roles:
+    - Gather_Facts
+    - ANSSI_Configuration
+
+  tasks:
+    - name: Display project success message
+      ansible.builtin.debug:
+        msg: "Project works!"
